@@ -1,0 +1,119 @@
+.product__info-wrapper .product__title h1{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+
+.product__info-wrapper .price__regular,
+.product__info-wrapper .product__description {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+.product__info-wrapper label.option__product_variant {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 97px;
+  height: 97px;
+  border-radius: 50% !important;
+}
+.product__info-wrapper label.option__product_variant img {
+  width: 100%;
+}
+.product__info-wrapper .product-form__input {
+  max-width: none !important;
+  display: flex;
+  justify-content: space-between;
+}
+.product__info-wrapper .product-form__input .form__label {
+  display: none;
+}
+.product-form__buttons {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100% !important;
+}
+.product-form__buttons quantity-input.quantity,
+.product-form__buttons button.product-form__submit,
+.product-form__buttons .shopify-payment-button {
+  width: 33.33%;
+}
+.product-form__buttons button.product-form__submit,
+.product-form__buttons .shopify-payment-button {
+  margin: 0px 0px 0px 12px;
+}
+.product-form__buttons button.product-form__submit{
+  background: #C4C4C4;
+
+}
+.product-form__buttons button.product-form__submit::after{
+  box-shadow: none;
+}
+.product-form__buttons .shopify-payment-button__button,
+.product-form__buttons button.product-form__submit {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #FFFFFF;
+}
+.product-form__buttons .quantity__input {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+}
+.quantity__button svg {
+  width: 16px;
+}
+.pdp-text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #000;
+}
+
+@media (max-width: 1080px) {
+  .product__info-wrapper label.option__product_variant {
+    width: 50px;
+    height: 50px;
+  }
+  .product-form__buttons {
+    flex-wrap: wrap;
+  }
+  .product-form__buttons .shopify-payment-button__button,
+  .product-form__buttons button.product-form__submit {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+  }
+  .product-form__buttons quantity-input.quantity,
+  .product-form__buttons button.product-form__submit {
+    width: 47%;
+  }
+  .product-form__buttons .shopify-payment-button {
+    width: 100%;
+    margin-left: 0px;
+    margin-top: 22px;
+  }
+  .product__info-wrapper .product__description {
+    font-size: 18px;
+  }
+  .product__info-wrapper label.option__product_variant img {
+    width: 30px;
+  }
+}

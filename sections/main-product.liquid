@@ -481,19 +481,22 @@
                       <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
-                          <input
-                            type="radio"
-                            id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                            name="{{ option.name }}"
-                            value="{{ value | escape }}"
-                            form="{{ product_form_id }}"
-                            {% if option.selected_value == value %}
-                              checked
-                            {% endif %}
-                          >
-                          <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                            {{ value }}
-                          </label>
+                          <div class="product-variant">
+                            <input
+                              type="radio"
+                              id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                              name="{{ option.name }}"
+                              value="{{ value | escape }}"
+                              form="{{ product_form_id }}"
+                              {% if option.selected_value == value %}
+                                checked
+                              {% endif %}
+                            >
+                            <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="option__product_variant">
+                              {% comment %}{{ value }}{% endcomment %}
+                              <img src="{{ product.media[forloop.index0] | img_url: 'master' }}" alt="{{ product.title }}" loading="lazy" height="auto" width="auto" />
+                            </label>
+                          </div>
                         {%- endfor -%}
                       </fieldset>
                     {%- endfor -%}
@@ -501,6 +504,9 @@
                       {{ product.variants | json }}
                     </script>
                   </variant-radios>
+                  <div class="variant-name">
+                    <p class="selected__variant-name pdp-text">Flavor: <label></label></p>
+                  </div>
                 {%- else -%}
                   <variant-selects
                     class="no-js-hidden"
@@ -602,6 +608,30 @@
                       disabled
                     >
                     <div class="product-form__buttons">
+                      <quantity-input class="quantity">
+                        <button class="quantity__button no-js-hidden" name="minus" type="button">
+                          <span class="visually-hidden">
+                            {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                          </span>
+                          {% render 'icon-minus' %}
+                        </button>
+                        <input
+                          class="quantity__input"
+                          type="number"
+                          name="quantity"
+                          id="Quantity-{{ section.id }}"
+                          min="1"
+                          value="1"
+                          form="{{ product_form_id }}"
+                        >
+                        <button class="quantity__button no-js-hidden" name="plus" type="button">
+                          <span class="visually-hidden">
+                            {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                          </span>
+                          {% render 'icon-plus' %}
+                        </button>
+                      </quantity-input>
+
                       <button
                         type="submit"
                         name="add"
@@ -635,6 +665,9 @@
                       {%- endif -%}
                     </div>
                   {%- endform -%}
+
+                  <p class="txt__total-price pdp-text">Yur total: <label></label></p>
+                  <input type="hidden" class="currency-symbole" value="{{ cart.currency.symbol }}">
                 </product-form>
 
                 {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
